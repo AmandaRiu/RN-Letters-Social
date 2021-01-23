@@ -10,6 +10,7 @@ import Ad from './components/ad/Ad';
 import Navbar from './components/nav/navbar';
 import Welcome from './components/welcome/Welcome';
 import Post from './components/post/Post';
+import CreatePost from './components/post/Create';
 
 class App extends Component {
     constructor( props ) {
@@ -22,6 +23,7 @@ class App extends Component {
                 .ENDPOINT}/posts?_page=1&_sort=date&_order=DESC&_embed=comments&_expand=user&_embed=likes`,
         };
         this.getPosts = this.getPosts.bind( this );
+        this.createNewPost = this.createNewPost.bind( this );
     }
 
     static propTypes = {
@@ -57,6 +59,16 @@ class App extends Component {
             } );
     }
 
+    createNewPost( post ) {
+        console.log( post );
+        this.setState( prevState => {
+            return {
+                posts: orderBy( prevState.posts.concat( post ),
+                    'date', 'desc' )
+            };
+        } );
+    }
+
     render() {
         return (
             <div className="app">
@@ -69,6 +81,7 @@ class App extends Component {
                         <div className="home">
                             <Welcome />
                             <div>
+                                <CreatePost onSubmit={ this.createNewPost } />
                                 { this.state.posts.length && (
                                     <div className="posts">
                                         {this.state.posts.map( ( { id } ) => (
