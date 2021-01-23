@@ -6,11 +6,11 @@ const PostActionSection = props => {
     return (
         <div className="post-actions">
             <span>
-                <i className={'fa fa-thumbs-o-up'} />
+                <i className={ 'fa fa-thumbs-o-up' } />
             </span>
             <button className="open">
-                <i className="fa fa-commenting-o" />{' '}
-                <i className={`fa ${showComments ? 'fa-angle-up' : 'fa-angle-down'}`} />
+                <i className="fa fa-commenting-o" />{ ' ' }
+                <i className={ `fa ${showComments ? 'fa-angle-up' : 'fa-angle-down'}` } />
             </button>
         </div>
     );

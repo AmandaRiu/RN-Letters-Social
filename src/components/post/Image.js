@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Image = props => {
-    if (props.post && props.post.image) {
+    if ( props.post && props.post.image ) {
         return (
             <img
                 className="img-responsive"
-                src={props.post.image}
+                src={ props.post.image }
                 alt="React in Action by Mark Thomas"
             />
         );
@@ -15,7 +15,7 @@ const Image = props => {
 };
 
 Image.propTypes = {
-    post: PropTypes.shape({ image: PropTypes.string })
+    post: PropTypes.shape( { image: PropTypes.string } )
 };
 
 export default Image;

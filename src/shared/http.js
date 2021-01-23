@@ -8,9 +8,9 @@ import Cookies from 'js-cookie';
  * @param  {object}            [body=null] payload for post/put
  * @return {object}                        config
  */
-function generateFetchConfig(method, body = null) {
+function generateFetchConfig( method, body = null ) {
     const upCasedMethod = method.toUpperCase();
-    const token = Cookies.get('letters-token');
+    const token = Cookies.get( 'letters-token' );
     const config = {
         method: upCasedMethod,
         headers: {
@@ -19,8 +19,8 @@ function generateFetchConfig(method, body = null) {
         },
         credentials: 'same-origin'
     };
-    if (['POST', 'PUT'].includes(upCasedMethod)) {
-        config.body = JSON.stringify(body);
+    if ( [ 'POST', 'PUT' ].includes( upCasedMethod ) ) {
+        config.body = JSON.stringify( body );
     }
     return config;
 }
@@ -31,9 +31,9 @@ function generateFetchConfig(method, body = null) {
  * @param  {object}   payload Post payload
  * @return {Response}           Fetch Response
  */
-export function createPost(payload) {
+export function createPost( payload ) {
     // Send the new post to the API
-    return fetch(`${process.env.ENDPOINT}/posts`, generateFetchConfig('POST', payload));
+    return fetch( `${process.env.ENDPOINT}/posts`, generateFetchConfig( 'POST', payload ) );
 }
 
 /**
@@ -42,8 +42,9 @@ export function createPost(payload) {
  * @param  {string}   endpoint URL provided by Redux; the API will yield further endpoints we can access via the Link Header (https://www.w3.org/wiki/LinkHeader)
  * @return {Response}          Fetch API Response
  */
-export function fetchPosts(endpoint) {
-    return fetch(endpoint);
+export function fetchPosts( endpoint ) {
+    console.log( endpoint );
+    return fetch( endpoint );
 }
 
 /**
@@ -52,10 +53,10 @@ export function fetchPosts(endpoint) {
  * @param  {string}  id post ID
  * @return {Response}     Fetch Response object
  */
-export function fetchPost(id) {
+export function fetchPost( id ) {
     return fetch(
         `${process.env.ENDPOINT}/posts/${id}?_embed=comments&_expand=user&_embed=likes`,
-        generateFetchConfig('GET')
+        generateFetchConfig( 'GET' )
     );
 }
 
@@ -65,10 +66,10 @@ export function fetchPost(id) {
  * @param  {string}  postId post ID
  * @return {Response}  Fetch Response object
  */
-export function fetchCommentsForPost(postId) {
+export function fetchCommentsForPost( postId ) {
     return fetch(
         `${process.env.ENDPOINT}/comments?postId=${postId}&_expand=user`,
-        generateFetchConfig('GET')
+        generateFetchConfig( 'GET' )
     );
 }
 
@@ -78,9 +79,9 @@ export function fetchCommentsForPost(postId) {
  * @param  {object}   payload Post payload
  * @return {Response}           Fetch Response
  */
-export function createComment(payload) {
+export function createComment( payload ) {
     // Send the new post to the API
-    return fetch(`${process.env.ENDPOINT}/comments`, generateFetchConfig('POST', payload));
+    return fetch( `${process.env.ENDPOINT}/comments`, generateFetchConfig( 'POST', payload ) );
 }
 
 /**
@@ -90,11 +91,11 @@ export function createComment(payload) {
  * @param  {string} userId user's ID
  * @return {Response}        Fetch Response
  */
-export function likePost(postId, userId) {
+export function likePost( postId, userId ) {
     // Create a new like for the user/post
     return fetch(
         `${process.env.ENDPOINT}/posts/${postId}/likes/${userId}`,
-        generateFetchConfig('PUT', { postId, userId })
+        generateFetchConfig( 'PUT', { postId, userId } )
     );
 }
 
@@ -105,10 +106,10 @@ export function likePost(postId, userId) {
  * @param  {string}   userId
  * @return {Response}
  */
-export function unlikePost(postId, userId) {
+export function unlikePost( postId, userId ) {
     return fetch(
         `${process.env.ENDPOINT}/posts/${postId}/likes/${userId}`,
-        generateFetchConfig('DELETE')
+        generateFetchConfig( 'DELETE' )
     );
 }
 
@@ -118,8 +119,8 @@ export function unlikePost(postId, userId) {
  * @param  {string}  id post ID
  * @return {Response}     Fetch Response object
  */
-export function loadUser(id) {
-    return fetch(`${process.env.ENDPOINT}/users/${id}`, generateFetchConfig('GET'));
+export function loadUser( id ) {
+    return fetch( `${process.env.ENDPOINT}/users/${id}`, generateFetchConfig( 'GET' ) );
 }
 
 /**
@@ -128,6 +129,6 @@ export function loadUser(id) {
  * @param  {object}  payload new user payload
  * @return {Response}     Fetch Response object
  */
-export function createUser(payload) {
-    return fetch(`${process.env.ENDPOINT}/users`, generateFetchConfig('POST', payload));
+export function createUser( payload ) {
+    return fetch( `${process.env.ENDPOINT}/users`, generateFetchConfig( 'POST', payload ) );
 }

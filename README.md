@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/react-in-action/letters-social.svg?style=svg)](https://circleci.com/gh/react-in-action/letters-social)
 
 
-This is an updated and working copy of the project from [_React in Action_](https://ifelse.io/book). 
+This is an updated and working copy of the project from [_React in Action_](https://ifelse.io/book). This repo was created from a copy of the Chapter-4 branch.
 
 Links
 ------
@@ -17,10 +17,6 @@ Links
 - <b><a href="mailto:hello@ifelse.io">Email</a></b>: You can also feel free to send me an email and I'll do my absolute best to get back to you
 - [**Issues**](https://github.com/react-in-action/letters-social/issues/new): Feel free to open any issues w/ questions or proposed changes here
 
-
-Tooling
-------
-TODO
 
 What this builds
 ------

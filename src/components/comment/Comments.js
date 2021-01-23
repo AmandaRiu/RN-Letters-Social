@@ -6,12 +6,12 @@ import Comment from './Comment';
 
 const Comments = props => {
     const { comments, show, post, handleSubmit, user } = props;
-    if (show && !comments) {
+    if ( show && !comments ) {
         return <Loader />;
     }
     return (
         <div className="comments">
-            {show && comments.map(comment => <Comment key={comment.id} comment={comment} />)}
+            {show && comments.map( comment => <Comment key={ comment.id } comment={ comment } /> ) }
         </div>
     );
 };

@@ -7,15 +7,15 @@ const UserHeader = props => {
     return (
         <div className="user-header">
             <div className="user-info-section">
-                <img src={user.profilePicture} width={25} height={25} className="img-circle" />
-                <a>{user.name}</a>
+                <img src={ user.profilePicture } width={ 25 } height={ 25 } className="img-circle" />
+                <a>{ user.name }</a>
             </div>
             <small className="date">
-                {humanize(new Date() - new Date(date), {
+                { humanize( new Date() - new Date( date ), {
                     largest: 1,
                     round: true,
-                    units: ['d', 'h', 'm']
-                })}{' '}
+                    units: [ 'd', 'h', 'm' ]
+                } ) }{ ' ' }
                 ago
             </small>
         </div>
@@ -24,10 +24,10 @@ const UserHeader = props => {
 
 UserHeader.propTypes = {
     date: PropTypes.number,
-    user: PropTypes.shape({
+    user: PropTypes.shape( {
         profilePicture: PropTypes.string.isRequired,
         name: PropTypes.string
-    })
+    } )
 };
 
 UserHeader.defaultProps = {
